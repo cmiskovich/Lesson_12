@@ -1,7 +1,7 @@
 # Lesson_12
 # Primary application file
 
-Produce a Google colab file analyzing the company's financial and user data in clever ways to make the company grow. So, you want to find out if the ability to predict search traffic can translate into the ability to successfully trade the stock.
+Produce a jupyter lab file along with an analysis of the jupyter lab file based on credit worthiness of clients based on lending_data.csv.
 
 
 ---
@@ -29,20 +29,19 @@ Visual Studio Code
 Jupyter Lab 
     Version 3.2.9
     
-Google.colab
+
 
 ---
 
 ## General information about analysis.
 
-First you need to configure Google Colab workspace.  After configuring Google Colab try to find unusual patterns in hourly google search traffic.
+First you need to split the data into training and testing sets.
 
-After that you mine the search traffic data for seasonality and try to find search traffic to stock price patterns.
+Then you create a logistic regression model with the original data.
 
-Then you creat a time series model with Prophet and forecast revenue by using time series models.
+After that you predict the logistic regression medel with resampled training data using over sampling.
 
-
-
+Finally you write a credit risk analysis report on your findings.
 
 
 
@@ -50,45 +49,47 @@ Then you creat a time series model with Prophet and forecast revenue by using ti
 
 ## Information about datasets
 
-Data frame for trends in search history:
+Data frame for lending data:
 
-df_mercado_trends
+lending_data_df
 
-Data frame for May 2020 search history:
+Data for X and y:
 
-df_may_2020
+y = lending_data_df["loan_status"]
 
-Create hvplot for day of week search trends:
+X = lending_data_df.drop(columns=["loan_status"])
 
-mean_daily_traffic
+Split the dat using train test spilt function:
 
-Create a data frame stock price:
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
 
-df_mercado_stock
+Create Logistic Regression mode:
 
-Concatenate the stock price and search trend data frames:
+logistic_regression_model
 
-mercado_stock_trends_df
+Make predictions:
 
-Adjust concatenated data frame to first half of 2020:
+predictions
 
-first_half_2020 
+Combiner both predictions and targets:
 
-Create a prophet data frame for search trends:
+results_df
 
-mercado_prophet_df
+Create an accuracy score:
 
-Plot data for components in search trend data frame:
+balanced_accuracy_score
 
-forecast_mercado_trends, figures_mercado_trends
+Create a confusion matrix:
 
-Data frame for daily revenue:
+training_matrix
 
-df_mercado_sales
+Create a classification report for the model:
 
-Create a Prophet data frame for revenue:
+training_report
 
-mercado_sales_prophet_df
+Ininiate the random over sampler model:
+
+random_oversampler
 
 
 
@@ -101,17 +102,23 @@ pandas
 
 numpy
 
-holoviews
+Path
+
+balanced_accuracy_score
+
+confusion_matrix
+
+classification_report_imbalanced
 
 Prophet
 
-hvplot
+filterwarnings (ignore)
 
-datetime
+train_test_split
 
-metaplotlib
+LogisticRegression
 
-panel
+RandomOverSampler
 
 ---
 
